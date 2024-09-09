@@ -24,6 +24,7 @@ jobs:
 
       - name: Install dependencies
         run: |
+          set -x
           sudo apt-get update
           sudo apt-get install -y wget unzip
 
@@ -40,6 +41,9 @@ jobs:
 
           # Ensure gradlew is executable
           chmod +x android/gradlew
+          
+          # List directory contents for debugging
+          ls -la android
 
           # Clean the build
           cd android
