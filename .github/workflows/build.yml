@@ -21,6 +21,11 @@ jobs:
         with:
           java-version: '11'
           distribution: 'temurin'
+
+      - name: Set executable permissions for gradlew
+        run: |
+          chmod +x android/gradlew
+
       - name: Build APK
         run: |
           cd android
