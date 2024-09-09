@@ -13,6 +13,7 @@ import {
   StatusBar,
   StyleSheet,
   Text,
+  TouchableOpacity,
   useColorScheme,
   View,
 } from 'react-native';
@@ -29,31 +30,31 @@ type SectionProps = PropsWithChildren<{
   title: string;
 }>;
 
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
+// function Section({children, title}: SectionProps): React.JSX.Element {
+//   const isDarkMode = useColorScheme() === 'dark';
+//   return (
+//     <View style={styles.sectionContainer}>
+//       <Text
+//         style={[
+//           styles.sectionTitle,
+//           {
+//             color: isDarkMode ? Colors.white : Colors.black,
+//           },
+//         ]}>
+//         {title}
+//       </Text>
+//       <Text
+//         style={[
+//           styles.sectionDescription,
+//           {
+//             color: isDarkMode ? Colors.light : Colors.dark,
+//           },
+//         ]}>
+//         {children}
+//       </Text>
+//     </View>
+//   );
+// }
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -71,8 +72,8 @@ function App(): React.JSX.Element {
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
-        <Header />
-        <View
+        {/* <Header /> */}
+        {/* <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
@@ -90,7 +91,11 @@ function App(): React.JSX.Element {
             Read the docs to discover what to do next:
           </Section>
           <LearnMoreLinks />
-        </View>
+        </View> */}
+        <Text style={{textAlign: 'center'}}>Welcome To New project</Text>
+        <TouchableOpacity style={{backgroundColor: 'orange', borderRadius: 5}}>
+          <Text style={{textAlign: 'center', paddingVertical: 20}}>Login</Text>
+        </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>
   );
