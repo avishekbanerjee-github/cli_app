@@ -20,25 +20,36 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '11'
-          distribution: 'temurin' # Use 'temurin' instead of 'adoptopenjdk'
+          distribution: 'temurin'
 
       - name: Install dependencies
         run: |
-          sudo apt-get install -y wget
+          sudo apt-get update
+          sudo apt-get install -y wget unzip
+
+          # Download and install Gradle
           wget https://services.gradle.org/distributions/gradle-7.6-bin.zip
           unzip gradle-7.6-bin.zip
           sudo mv gradle-7.6 /opt/gradle
+          sudo chmod +x /opt/gradle/bin/gradle
           export PATH=$PATH:/opt/gradle/bin
           gradle --version
+
+          # Install npm dependencies
           npm install
+
+          # Ensure gradlew is executable
+          chmod +x android/gradlew
+
+          # Clean the build
           cd android
           ./gradlew clean
-          
+
       - name: Build APK
         run: |
           cd android
           ./gradlew assembleRelease
-          
+
       - name: Upload APK
         uses: actions/upload-artifact@v3
         with:
