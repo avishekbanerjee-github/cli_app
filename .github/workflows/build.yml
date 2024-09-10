@@ -39,11 +39,11 @@ jobs:
           cd android
           ./gradlew assembleRelease --stacktrace
 
-      - name: List APK Directory
-        run: |
-          cd android
-          ls -la app/build/outputs/apk/release/
-          ls -la app/build/outputs/apk/
+      # - name: List APK Directory
+      #   run: |
+      #     cd android
+      #     ls -la app/build/outputs/apk/release/
+      #     ls -la app/build/outputs/apk/
 
       - name: List APK Directory After Build
         run: |
