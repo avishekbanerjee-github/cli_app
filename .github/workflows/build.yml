@@ -41,9 +41,10 @@ jobs:
 
       - name: List APK Directory
         run: |
-          ls -la android/app/build/outputs/apk/release/
-          ls -la android/app/build/outputs/apk/
-
+          cd android
+          ls -la app/build/outputs/apk/release/
+          ls -la app/build/outputs/apk/
+          
       - name: Upload APK
         uses: actions/upload-artifact@v3
         with:
