@@ -92,10 +92,28 @@ function App(): React.JSX.Element {
           </Section>
           <LearnMoreLinks />
         </View> */}
-        <Text style={{textAlign: 'center',color:'lightblue',marginTop:'5%'}}>Welcome To New project</Text>
-        <TouchableOpacity style={{backgroundColor: 'orange', borderRadius: 5,marginTop:'50%'}}>
-          <Text style={{textAlign: 'center', paddingVertical: 20}}>Login in to our Application</Text>
-        </TouchableOpacity>
+        <Text
+          style={{
+            textAlign: 'center',
+            color: '#11d5e3',
+            marginTop: '5%',
+            backgroundColor: 'lightgray',
+          }}>
+          Welcome To New project
+        </Text>
+        <View style={{justifyContent:'center',alignItems:'center'}}>
+          <TouchableOpacity
+            style={{
+              backgroundColor: 'orange',
+              borderRadius: 5,
+              marginTop: '50%',
+              width: '60%',
+            }}>
+            <Text style={{textAlign: 'center', paddingVertical: 20}}>
+              Login in to our Application
+            </Text>
+          </TouchableOpacity>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
