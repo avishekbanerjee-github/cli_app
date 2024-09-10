@@ -39,7 +39,7 @@ jobs:
           cd android
           ./gradlew assembleRelease --info
 
-           - name: List APK Directory
+      - name: List APK Directory
         run: |
           ls -la android/app/build/outputs/apk/release/
 
