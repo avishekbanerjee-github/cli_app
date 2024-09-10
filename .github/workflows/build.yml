@@ -44,9 +44,14 @@ jobs:
           cd android
           ls -la app/build/outputs/apk/release/
           ls -la app/build/outputs/apk/
-          
+
+      - name: List APK Directory After Build
+        run: |
+          cd android
+          find . -name '*.apk'
+
       - name: Upload APK
         uses: actions/upload-artifact@v3
         with:
           name: app-release
-          path:  android/app/build/outputs/apk/release/app-release.apk
+          path:  android/app/build/outputs/apk/**/*.apk
