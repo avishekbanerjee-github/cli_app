@@ -39,8 +39,12 @@ jobs:
           cd android
           ./gradlew assembleRelease --info
 
+           - name: List APK Directory
+        run: |
+          ls -la android/app/build/outputs/apk/release/
+
       - name: Upload APK
         uses: actions/upload-artifact@v3
         with:
           name: app-release
-          path: android\app\build\outputs\apk\release\app-release.apk
+          path:  android/app/build/outputs/apk/release/app-release.apk
