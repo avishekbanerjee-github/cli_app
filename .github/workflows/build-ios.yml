@@ -34,7 +34,7 @@ jobs:
     - name: Build iOS app
       run: |
         xcodebuild -workspace cli_app.xcodeproj \
-                   -scheme YourScheme \
+                   -scheme cli_app \
                    -sdk iphoneos \
                    -configuration Release \
                    archive \
