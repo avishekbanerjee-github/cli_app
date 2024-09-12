@@ -98,6 +98,7 @@ function App(): React.JSX.Element {
             color: '#11d5e3',
             marginTop: '5%',
             backgroundColor: 'lightgray',
+            fontSize:15,
           }}>
           Welcome To New project
         </Text>
