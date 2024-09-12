@@ -1,0 +1,50 @@
+name: Build iOS App
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20' 
+
+    - name: Install dependencies
+      run: |
+        npm install
+        cd ios
+        pod install
+
+    - name: Build iOS app
+      run: |
+        xcodebuild -workspace cli_app.xcodeproj \
+                   -scheme YourScheme \
+                   -sdk iphoneos \
+                   -configuration Release \
+                   archive \
+                   -archivePath ${{ github.workspace }}/build/YourApp.xcarchive
+
+    - name: Export iOS app
+      run: |
+        xcodebuild -exportArchive \
+                   -archivePath ${{ github.workspace }}/build/YourApp.xcarchive \
+                   -exportOptionsPlist ios/ExportOptions.plist \
+                   -exportPath ${{ github.workspace }}/build
+
+    - name: Upload iOS build artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: ios-build
+        path: ${{ github.workspace }}/build/YourApp.ipa
