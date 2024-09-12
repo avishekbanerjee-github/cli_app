@@ -33,7 +33,7 @@ jobs:
 
     - name: Build iOS app
       run: |
-        xcodebuild -workspace ios/cli_app.xcodeproj \
+        xcodebuild -project ios/cli_app.xcodeproj \
                    -scheme cli_app \
                    -sdk iphoneos \
                    -configuration Release \
