@@ -31,14 +31,25 @@ jobs:
       run: |
         xcodebuild -list -workspace ios/cli_app.xcworkspace
 
+    # - name: Build iOS app
+    #   run: |
+    #     xcodebuild -workspace cli_app.xcodeproj \
+    #                -scheme cli_app \
+    #                -sdk iphoneos \
+    #                -configuration Release \
+    #                archive \
+    #                -archivePath ${{ github.workspace }}/build/cli_app.xcarchive
+      
     - name: Build iOS app
-      run: |
-        xcodebuild -workspace cli_app.xcodeproj \
-                   -scheme cli_app \
-                   -sdk iphoneos \
-                   -configuration Release \
-                   archive \
-                   -archivePath ${{ github.workspace }}/build/cli_app.xcarchive
+    run: |
+      xcodebuild -workspace ios/cli_app.xcworkspace \ # Use the .xcworkspace file
+               -scheme cli_app \ # Use the correct scheme (as determined earlier)
+               -sdk iphoneos \
+               -configuration Release \
+               archive \
+               -archivePath ${{ github.workspace }}/build/cli_app.xcarchive
+
+
 
     - name: Export iOS app
       run: |
